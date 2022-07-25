@@ -1,129 +1,81 @@
-# Atelier-FEC
+# FEC
+Front End Capstone for RFP2205
 
-## Overview
-This is a Front-End-Capstone project created by Theresa Tran, Pan Liu, Peter Phan, and Jennifer Lin during Hack Reactor. Using tools, such as React and Node.js, each member built out key components of the project while showcasing their front-end skills.
+# Instructions for development
+---
+## Working on your branch
+The [Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) assumes *one central repository* and the `main` branch represents the official project history.
+Instead of committing directly to your local `main` branch, create a **new** branch to work on a **particular feature**. Feature branches should have *descriptive names* (e.g., “animated-menu-items”).
+Feature branches can (and *should*) be pushed to the central repository (on GitHub). The only *special* branch is `main`. **Don’t ever push anything to** `main`! The following is a brief overview of how to do your work:
+### 1. Start with the main branch
+All feature branches are created off the latest code state of a project. Assume that the `main` branch on GitHub is always up-to-date. First, check out the `main` branch on your machine, pull the latest updates, and reset the repo’s local copy of `main` to match the latest version:
+```
+git checkout main
+git fetch origin
+git reset --hard origin/main
+```
+### 2. Create a new feature branch
+Use a **separate branch for each feature/issue you work on**. You can create a branch and check it out in one command as follows:
+```
+git checkout -b new-branch-name
+```
+### 3. Update, add, and commit changes
+**On your feature branch**, you can edit, stage, and commit changes as usual.
+```
+git status
+git add some_file
+git commit -m “Some descriptive message--better messages help when we need to undo changes”
+```
+### 4. Push feature branch to remote (GitHub)
+When ready, push your commits, updating the feature branch on GitHub. It’s a good idea to push the feature branch up to the central repository so we can see what you’re doing. To push `new-branch-name` to the central repository (GitHub), issue:
+```
+git push -u origin new-branch-name
+```
+**NOTE**: The `-u` flag adds the local branch you created in step 2 as a remote tracking branch. After setting up the tracking branch, `git push` can be invoked without any parameters to automatically push the `new-branch-name` branch to the central repo (GitHub).
+### 5. Done implementing the feature? Create a pull request!
+When you’ve finished implementing and testing the feature your branch was created to work on, create a pull request through GitHub.
+## Running your code
+1. Make sure you’re working on the correct branch!
+2. Open two terminal tabs and navigate to the root directory.
+3. In one tab, run `npm start` to start the node server, which serves up static files from the /client/dist directory.
+4. In the second tab, run `npm run react-dev`, which uses webpack to regenerate the `bundle.js` file when you save changes to one of your components.
+5. Navigate to `localhost:3000` in your browser.
+AtlassianAtlassian
+Git Feature Branch Workflow | Atlassian Git Tutorial
+Learn if this Git branching model is right for you and your team with this deep dive into the Git Feature Branch Workflow.
 
-## Table of Contents
-1. Background
-2. Contributor
-3. Tech Stack
 
+# Semantic Commit Messages
 
-## Background
-With the goal of building a dynamic retail application and consolidating our front-end knowledge, this project was built from scratch. The results is an application that allows users to browse the details of the desired product as well as view provided related products and comparisons, questions that have been previously asked and answered, and the product's ratings and reviews.
+See how a minor change to your commit message style can make you a better programmer.
 
-## Contributor
+Format: `<type>(<scope>): <subject>`
 
-### Overview
+`<scope>` is optional
 
-Contributor: Theresa Tran
+## Example
 
-[![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com.in/caleb-kim0510/)](https://www.linkedin.com/in/theresatee) &emsp; [![Github](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/txtrax)
+```
+feat: add hat wobble
+^--^  ^------------^
+|     |
+|     +-> Summary in present tense.
+|
++-------> Type: chore, docs, feat, fix, refactor, style, or test.
+```
 
-The **Overview** component, created by Theresa Tran, provides pertinent information about the product as well as allows the user to add the product to their cart. 
+More Examples:
 
-Key Features include: 
+- `feat`: (new feature for the user, not a new feature for build script)
+- `fix`: (bug fix for the user, not a fix to a build script)
+- `docs`: (changes to the documentation)
+- `style`: (formatting, missing semi colons, etc; no production code change)
+- `refactor`: (refactoring production code, eg. renaming a variable)
+- `test`: (adding missing tests, refactoring tests; no production code change)
+- `chore`: (updating grunt tasks etc; no production code change)
 
- - a navigation bar
-   - clicking on the test would take a user to the desired section of the page
- - an image gallery that consists of:
-   - product information that dynamically rerenders when a different style of the product or a related product is selected
-   - a main carousel that displays the main image, clicking on the image would allow the user to view an expanded version of the image
-   - a thumbnail carousel that contains other images included with the product, clicking on the thumbnails would display it as the main image
-   - an add-to-cart section that allows the user to view the subtotal of the items in their cart as well as the products and their respective style and size for checkout
+References:
 
-### Related Products & Outfits
-
-Contributor: Pan Liu
-
-[![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com.in/caleb-kim0510/)](https://www.linkedin.com/in/pan-liu-us/) &emsp; [![Github](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/pan-liu-us)
-
-The **Related Products & Outfits** component, created by Pan Liu, makes it easy for users to continue shopping, and drive conversions for the company by positioning recommended products based on the current product they are viewing, as well as enabling users to personalize and group their chosen products as an outfit.
-
-Key Features include: 
-
-- a scrollable related products carousel 
-  - each card includes information of product category, product name, price/sales price and star rating which will be hidden if the product has no review
-  - clicking the card navigates to the detail page for that product 
-  - clicking on :star: icon triggers a comparison modal window
-- a scrollable outfits carousel 
-  - clicking on :heavy_plus_sign: card adds current product to outfit lists, an product can only be added once
-  - clicking on :x: icon on each card removes the product from the list
-  - the outfit list persist per user even if they exit the website and return later
-
-### Questions & Answers
-
-Contributor: Peter Phan
-
-[![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com.in/caleb-kim0510/)](https://www.linkedin.com/in/peter-phan-3a1467173/) &emsp; [![Github](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/peterhphan)
-
-The **Questions & Answers** component, created by Peter Phan, allows the users to view the a list of questions asked about the specific product. 
-
-Key Features include:
-
- - users can search for questions
- - users could add their own questions or answers
- - users are allow to vote for questions/answers helpfulness
-
-### Ratings & Reviews
-
-Contributor: Jennifer Lin
-
-[![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com.in/caleb-kim0510/)](https://www.linkedin.com/in/fylin/) &emsp; [![Github](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/cariboukim)](https://github.com/JennyMipha)
-
-The **Ratings & Reviews** component, created by Jennifer Lin, allows more insight on the satisfaction of previous consumers. 
-
-Features included here gives users the ability to:
-
- - submit a review
- - view rating breakdown
- - view product characteristics
- - sort reviews by latest, helpfulness, and relevance
- - filter reviews with ratings
- 
-
-## Tech Stack
-
-### Dependencies
-npm
-
-### Version
-ES6
-
-### Linting
-Airbnb ESLint
-
-## Front End
-
-### Compilation & Loading & Transpile
-Webpack
-Babel with Webpack
-
-### Front-End MVC
-ReactJS
-axios
-cors
-dotenv
-moment
-prop-types
-react-dom
-react-icons
-react-is
-react-scroll
-react-star-ratings
-react-stars
-
-### Data Store
-Redux
-
-### CSS Framework
-Styled-Components
-
-## Server
-
-### MVC
-ExpressJS
-NodeJS
-
-## Testing Suite
-Jest
+- https://www.conventionalcommits.org/
+- https://seesparkbox.com/foundry/semantic_commit_messages
+- http://karma-runner.github.io/1.0/dev/git-commit-msg.html
