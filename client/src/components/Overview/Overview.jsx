@@ -13,7 +13,7 @@ const MainContainer = styled.div`
 
 export default function Overview() {
   const { productId } = useContext(IdContext);
-
+  console.log('what is productid in Overview', productId);
   const [overview, setOverview] = useState(null);
 
   useEffect(() => {

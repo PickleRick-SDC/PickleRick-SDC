@@ -9,7 +9,7 @@ const options = {
 };
 
 module.exports.getProducts = (cb) => {
-  axios.get(`${options.url}products`, { headers: options.headers })
+  axios.get('http://localhost:3001/pickleRick/products', { headers: options.headers })
     .then((result) => {
       cb(result);
     })
@@ -19,7 +19,7 @@ module.exports.getProducts = (cb) => {
 };
 
 module.exports.getProductInfo = (id, cb) => {
-  axios.get(`${options.url}products/${id}`, { headers: options.headers })
+  axios.get(`http://localhost:3001/pickleRick/products/${id}`, { headers: options.headers })
     .then((result) => {
       cb(result);
     })
@@ -29,7 +29,7 @@ module.exports.getProductInfo = (id, cb) => {
 };
 
 module.exports.getProductStyles = (id, cb) => {
-  axios.get(`${options.url}products/${id}/styles`, { headers: options.headers })
+  axios.get(`http://localhost:3001/pickleRick/products/${id}/styles`, { headers: options.headers })
     .then((result) => {
       cb(result);
     })

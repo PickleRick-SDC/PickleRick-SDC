@@ -88,6 +88,7 @@ function ProductList() {
     axios.get(`/products/${productId}/related`)
       .then((res) => {
         const allRelatedIds = res.data;
+        console.log('what is relatedinfo', allRelatedIds);
         allRelatedIds.forEach((id) => {
           const promise = Promise.all([getRelatedInfo(id), getRelatedStyle(id), getRatings(id)]);
           allPromises.push(promise);

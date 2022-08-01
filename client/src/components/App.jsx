@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import NavBar from './NavBar';
 import Overview from './Overview/Overview';
@@ -25,7 +26,18 @@ const AnnouncementContainer = styled.div`
 `;
 
 function App() {
-  const [productId, setProductId] = useState(40350);
+  const [productId, setProductId] = useState(40344);
+
+  useEffect(() => {
+    axios.get('/products')
+      .then((res) => {
+        setProductId(res.data[0].id);
+        console.log('what is data', res.data[0].id);
+      })
+      .catch((error) => {
+        console.log('Error in retreiving product id from client side', error);
+      });
+  }, [productId]);
 
   const providerIdValue = useMemo(() => ({ productId, setProductId }), [productId, setProductId]);
 
