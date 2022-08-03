@@ -28,16 +28,16 @@ const AnnouncementContainer = styled.div`
 function App() {
   const [productId, setProductId] = useState(40344);
 
-  useEffect(() => {
-    axios.get('/products')
-      .then((res) => {
-        setProductId(res.data[0].id);
-        console.log('what is data', res.data[0].id);
-      })
-      .catch((error) => {
-        console.log('Error in retreiving product id from client side', error);
-      });
-  }, [productId]);
+  // useEffect(() => {
+  //   axios.get('/products')
+  //     .then((res) => {
+  //       setProductId(res.data[0].id);
+  //       console.log('what is data', res.data[0].id);
+  //     })
+  //     .catch((error) => {
+  //       console.log('Error in retreiving product id from client side', error);
+  //     });
+  // }, [productId]);
 
   const providerIdValue = useMemo(() => ({ productId, setProductId }), [productId, setProductId]);
 

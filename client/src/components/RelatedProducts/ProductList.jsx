@@ -78,7 +78,7 @@ function ProductList() {
   }
 
   function getRatings(id) {
-    return axios.get(`/reviews/?product_id=${id}&sort=relevant`);
+    return axios.get('/reviews/?product_id=40344&sort=relevant');
   }
 
   const allPromises = [];
@@ -110,7 +110,7 @@ function ProductList() {
           });
       });
   }, [productId]);
-
+  console.log('what is the real related info', relatedInfo);
   return (
     <ListContainer>
       <SliderIconLeft onClick={slideLeft} />

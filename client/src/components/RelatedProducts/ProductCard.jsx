@@ -63,7 +63,7 @@ const StarButton = styled(MdOutlineStarOutline)`
 function ProductCard({ card }) {
   const { setProductId } = useContext(IdContext);
   const { setIsOpen, setRelatedId } = useContext(ModalContext);
-
+  console.log('what is card', card)
   function getAvgRating(reviews) {
     if (reviews.length !== 0) {
       return reviews.reduce((partialSum, cur) => partialSum + cur.rating, 0) / reviews.length;
